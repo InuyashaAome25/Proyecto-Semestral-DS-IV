@@ -1,0 +1,232 @@
+﻿@model Proyecto_Semestral_DS_IV.Models.Modelos.Genero
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Gestionar Género</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar Género...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Buscar</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-info">@ViewBag.Message</div>
+                        }
+
+                        <!-- Formulario para Crear Género -->
+                        <form action="@Url.Action("Create", "Genero")" method="post" class="form-horizontal">
+                            @Html.AntiForgeryToken()
+                            <span class="section">Información Genero</span>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Nombre Genero:<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.EditorFor(model => model.NombreGenero, new { htmlAttributes = new { @class = "form-control", id = "nombreGenero" } })
+                                    @Html.ValidationMessageFor(model => model.NombreGenero, "", new { @class = "text-danger" })
+                                    <span class="text-danger" id="nameGeneroError" style="display:none;">Este campo es obligatorio y debe tener al menos 6 caracteres.</span>
+                                </div>
+                            </div>
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" value="Crear" class="btn btn-primary" id="crearBtn" />
+                                        <input type="reset" value="Restablecer" class="btn btn-success" />
+                                        <button type="button" class="btn btn-secondary" id="limpiarBtnCrear">Limpiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Formulario para Eliminar Género -->
+                        <form action="@Url.Action("Delete", "Genero")" method="post" class="form-horizontal">
+                            @Html.AntiForgeryToken()
+                            <span class="section">Eliminar Genero</span>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">ID Genero:</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input type="text" class="form-control" name="Id" placeholder="ID del Género" id="idGenero" />
+                                    <span class="text-danger" id="idGeneroError" style="display:none;">Este campo es obligatorio.</span>
+                                </div>
+                            </div>
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" value="Eliminar" class="btn btn-danger" id="eliminarBtn" />
+                                        <input type="reset" value="Restablecer" class="btn btn-success" />
+                                        <button type="button" class="btn btn-secondary" id="limpiarBtnEliminar">Limpiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Formulario para Actualizar Género -->
+                        <form action="@Url.Action("Update", "Genero")" method="post" class="form-horizontal">
+                            @Html.AntiForgeryToken()
+                            <span class="section">Actualizar Género</span>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">ID Genero:</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input type="text" class="form-control" name="idGenero" placeholder="ID del Género" id="idGeneroActualizar" />
+                                    <span class="text-danger" id="idGeneroActualizarError" style="display:none;">Este campo es obligatorio.</span>
+                                </div>
+                            </div>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Nuevo Nombre:</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input type="text" class="form-control" name="nuevoNombre" placeholder="Nuevo Nombre del Género" id="nuevoNombreGenero" />
+                                    <span class="text-danger" id="nuevoNombreGeneroError" style="display:none;">Este campo es obligatorio.</span>
+                                </div>
+                            </div>
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" value="Actualizar" class="btn btn-primary" id="actualizarBtn" />
+                                        <input type="reset" value="Restablecer" class="btn btn-success" />
+                                        <button type="button" class="btn btn-secondary" id="limpiarBtnActualizar">Limpiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+        <script src="~/Vendors/validator/multifield.js"></script>
+        <script src="~/Vendors/validator/validator.js"></script>
+    }
+</div>
+<!-- /page content -->
+
+<script>
+    document.getElementById("crearBtn").addEventListener("click", function (e) {
+        var nameGeneroField = document.getElementById("nombreGenero");
+        var errorMsg = document.getElementById("nameGeneroError");
+        var valid = true;
+
+        if (nameGeneroField.value.trim() === '' || nameGeneroField.value.length < 6) {
+            errorMsg.style.display = 'block';
+            valid = false;
+        } else {
+            errorMsg.style.display = 'none';
+        }
+
+        if (!valid) {
+            e.preventDefault();
+        }
+    });
+
+    document.getElementById("eliminarBtn").addEventListener("click", function (e) {
+        var idGeneroField = document.getElementById("idGenero");
+        var errorMsg = document.getElementById("idGeneroError");
+        var valid = true;
+
+        if (idGeneroField.value.trim() === '') {
+            errorMsg.style.display = 'block';
+            valid = false;
+        } else {
+            errorMsg.style.display = 'none';
+        }
+
+        if (!valid) {
+            e.preventDefault();
+        }
+    });
+
+    document.getElementById("actualizarBtn").addEventListener("click", function (e) {
+        var idGeneroField = document.getElementById("idGeneroActualizar");
+        var nombreGeneroField = document.getElementById("nuevoNombreGenero");
+        var idErrorMsg = document.getElementById("idGeneroActualizarError");
+        var nombreErrorMsg = document.getElementById("nuevoNombreGeneroError");
+        var valid = true;
+
+        if (idGeneroField.value.trim() === '') {
+            idErrorMsg.style.display = 'block';
+            valid = false;
+        } else {
+            idErrorMsg.style.display = 'none';
+        }
+
+        if (nombreGeneroField.value.trim() === '' || nombreGeneroField.value.length < 6) {
+            nombreErrorMsg.style.display = 'block';
+            valid = false;
+        } else {
+            nombreErrorMsg.style.display = 'none';
+        }
+
+        if (!valid) {
+            e.preventDefault();
+        }
+    });
+
+    document.forms[0].addEventListener("reset", function (e) {
+        var errorMsg = document.getElementById("nameGeneroError");
+        if (errorMsg) {
+            errorMsg.style.display = 'none';
+        }
+    });
+
+    document.forms[1].addEventListener("reset", function (e) {
+        var errorMsg = document.getElementById("idGeneroError");
+        if (errorMsg) {
+            errorMsg.style.display = 'none';
+        }
+    });
+
+    document.forms[2].addEventListener("reset", function (e) {
+        var idErrorMsg = document.getElementById("idGeneroActualizarError");
+        var nombreErrorMsg = document.getElementById("nuevoNombreGeneroError");
+        if (idErrorMsg) {
+            idErrorMsg.style.display = 'none';
+        }
+        if (nombreErrorMsg) {
+            nombreErrorMsg.style.display = 'none';
+        }
+    });
+
+    document.getElementById("limpiarBtnCrear").addEventListener("click", function (e) {
+        // Limpia todos los campos del formulario de Crear
+        var inputs = document.querySelectorAll('form[action*="Create"] input[type="text"]');
+        inputs.forEach(function (input) {
+            input.value = '';
+        });
+    });
+
+    document.getElementById("limpiarBtnEliminar").addEventListener("click", function (e) {
+        // Limpia todos los campos del formulario de Eliminar
+        var inputs = document.querySelectorAll('form[action*="Delete"] input[type="text"]');
+        inputs.forEach(function (input) {
+            input.value = '';
+        });
+    });
+
+    document.getElementById("limpiarBtnActualizar").addEventListener("click", function (e) {
+        // Limpia todos los campos del formulario de Actualizar
+        var inputs = document.querySelectorAll('form[action*="Update"] input[type="text"]');
+        inputs.forEach(function (input) {
+            input.value = '';
+        });
+    });
+</script>

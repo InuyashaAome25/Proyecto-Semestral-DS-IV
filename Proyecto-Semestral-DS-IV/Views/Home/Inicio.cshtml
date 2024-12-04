@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/CSS/StyleInicio.css" />
+<div class="container-md my-10">
+    <div class="row">
+        <div class="justify-content-md-center">
+            <h1 class="display-4 justify-content-center text-center">Bienvenidos A Arboles De Los Libros</h1>
+            <div class="col-sm-6 col-md-10 col-lg-12 align-items-center">
+                <p class="parrafo-inicio">
+                    ¡Descubre un mundo nuevo entre las páginas de un buen libro! Leer no solo es una fuente inagotable de conocimiento, sino una puerta abierta a la imaginación, la aventura y el crecimiento personal. Sumérgete en historias que despierten tu curiosidad, personajes que te inspiren y reflexiones que transformen tu perspectiva. Cada libro es una invitación a viajar sin moverte del lugar, a entender otras realidades y a enriquecer tu alma. ¿Qué esperas? ¡El próximo capítulo de tu vida podría estar en la próxima página que leas!
+                </p>
+            </div>
+        </div>
+
+        <div id="carouselExampleDark" class="carousel carousel-dark slide mt-5">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="9" aria-label="Slide 10"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="~/Content/IMG/FuegoYSangre.png" class="d-block w-75 centered-image shadow" alt="Carrusel-1">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/Content/IMG/AlasDeSabgre.jpg" class="d-block w-75 centered-image shadow" alt="Carrusel-2">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/Content/IMG/Saga-La-Reina-Roja.jpg" class="d-block w-75 centered-image shadow" alt="Carrusel-4">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/Content/IMG/El-Señor-De-Los-Anillos.jpg" class="d-block w-75 centered-image shadow" alt="Carrusel-4">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/Content/IMG/Alas-De-Hieero-2.png" class="d-block w-50 centered-image shadow" alt="Carrusel-3">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/Content/IMG/librocienañosdesoledad.jpg" class="d-block w-75 centered-image shadow" alt="Carrusel-4">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/Content/IMG/Piedra-Filosofal.jpg" class="d-block w-25 centered-image shadow" alt="Carrusel-4">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/Content/IMG/Juegos-Del-Hambre.jpg" class="d-block w-75 centered-image shadow" alt="Carrusel-4">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/Content/IMG/Viaje-Centro-Tierra.jpg" class="d-block w-25 centered-image shadow" alt="Carrusel-4">
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="~/Content/IMG/Un-Amor-Oscuro.jpg" class="d-block w-75 centered-image shadow" alt="Carrusel-4">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="row my-10">
+        <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center text-center">
+            <h3 class="subtitulos align-items-center">Escritores Famosos Contemporáneo Y Actuales</h3>
+        </div>
+    </div>
+
+    <div class="row my-10">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="~/Content/IMG/miguel-de-cervantes-saavedra.jpg" class="card-img-top w-50 centered-image" alt="Miguel">
+                    <div class="card-body">
+                        <h5 class="card-title">Miguel De Cervantes (1547-1616)</h5>
+                        <p class="card-text parrafo-inicio">Conocido como el "Príncipe de los Ingenios", Cervantes es el autor de Don Quijote de la Mancha, considerada la primera novela moderna y una de las obras más influyentes de la literatura universal. Su estilo mezcla humor, sátira y una crítica profunda de la sociedad de su época.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/Content/IMG/William.png" class="card-img-top w-50 centered-image" alt="William">
+                    <div class="card-body">
+                        <h5 class="card-title">William Shakespeare (1564-1616)</h5>
+                        <p class="card-text parrafo-inicio">Considerado uno de los más grandes dramaturgos de la historia, Shakespeare es conocido por su profundo entendimiento de la naturaleza humana. Sus obras exploran temas universales como el amor, el poder y la tragedia. Escribió más de 30 obras de teatro, incluyendo tragedias, comedias y dramas históricos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/Content/IMG/jrr-tolkien.jpg" class="card-img-top w-50 centered-image" alt="Tolkien">
+                    <div class="card-body">
+                        <h5 class="card-title">J.R.R. Tolkien (1892-1973)</h5>
+                        <p class="card-text parrafo-inicio">Filólogo, escritor y profesor británico, es famoso por crear el universo de la Tierra Media. Sus obras han sido fundamentales en la literatura fantástica moderna. Tolkien no solo creó historias épicas, sino también lenguas, mapas y una mitología propia.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/Content/IMG/garcia_marquez.jpg" class="card-img-top w-75 centered-image" alt="Marquez">
+                    <div class="card-body">
+                        <h5 class="card-title">Gabriel García Márquez (1927-2014)</h5>
+                        <p class="card-text parrafo-inicio">Escritor colombiano y máximo exponente del realismo mágico, ganador del Premio Nobel de Literatura en 1982. Sus obras combinan lo fantástico con lo cotidiano, reflejando la cultura y las problemáticas sociales de América Latina.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/Content/IMG/J.K.-Rowling.jpg" class="card-img-top w-50 centered-image" alt="Rowling">
+                    <div class="card-body">
+                        <h5 class="card-title">J.K. Rowling (n. 1965)</h5>
+                        <p class="card-text parrafo-inicio">Escritora británica, mundialmente conocida por crear la saga Harry Potter, una de las series de libros más exitosas de la historia. Rowling logró capturar la imaginación de millones de lectores con su mundo mágico, personajes memorables y temas universales como la amistad, el amor y la lucha contra el mal. Su obra ha trascendido la literatura, convirtiéndose en un fenómeno cultural global.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/Content/IMG/jules_verne.jpg" class="card-img-top w-50 centered-image" alt="Vernez">
+                    <div class="card-body">
+                        <h5 class="card-title">Julio Verne (1828-1905)</h5>
+                        <p class="card-text parrafo-inicio">Conocido como uno de los padres de la ciencia ficción, este escritor francés fue un visionario que predijo tecnologías como los submarinos y los viajes espaciales en una época donde estos eran inimaginables. Sus novelas combinan aventuras emocionantes con ciencia y exploración.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/Content/IMG/Victoria-Aveyard.jpg" class="card-img-top w-50 centered-image" alt="Averyard">
+                    <div class="card-body">
+                        <h5 class="card-title">Victoria Aveyard (n. 1990)</h5>
+                        <p class="card-text parrafo-inicio">Escritora estadounidense de literatura juvenil y fantasía. Se hizo famosa por su saga La Reina Roja, donde combina elementos de ciencia ficción y fantasía con crítica social. Sus historias suelen centrarse en la lucha por el poder y la injusticia social.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/Content/IMG/George-R.R.-Martin.jpg" class="card-img-top w-100 centered-image" alt="George">
+                    <div class="card-body">
+                        <h5 class="card-title">George R.R. Martin (n. 1948)</h5>
+                        <p class="card-text parrafo-inicio">Escritor y guionista estadounidense, conocido principalmente por su serie de fantasía épica Canción de Hielo y Fuego, que inspiró la exitosa serie de televisión Juego de Tronos. Sus obras se caracterizan por personajes complejos, intrigas políticas y un realismo brutal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

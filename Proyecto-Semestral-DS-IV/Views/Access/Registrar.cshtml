@@ -1,0 +1,100 @@
+﻿@model Proyecto_Semestral_DS_IV.Models.Modelos.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar</title>
+    <!--Bootstrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!--Custom styles-->
+    <link href="~/Content/CSS/Registrar.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Registrar</h3>
+                </div>
+                <div class="card-body">
+                    <form action="@Url.Action("Registrar", "Access")" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.Nombre, new { @class = "label-title" })
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Nombre" })
+                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.Apellido, new { @class = "label-title" })
+                                @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control", placeholder = "Apellido" })
+                                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.Correo, new { @class = "label-title" })
+                                @Html.TextBoxFor(model => model.Correo, new { @class = "form-control", placeholder = "Correo" })
+                                @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.Telefono, new { @class = "label-title" })
+                                @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", placeholder = "Teléfono" })
+                                @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                @Html.LabelFor(model => model.Direccion, new { @class = "label-title" })
+                                @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", placeholder = "Dirección" })
+                                @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.UserName, new { @class = "label-title" })
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "Usuario" })
+                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.PasswordUser, new { @class = "label-title" })
+                                @Html.PasswordFor(model => model.PasswordUser, new { @class = "form-control", placeholder = "Contraseña" })
+                                @Html.ValidationMessageFor(model => model.PasswordUser, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Registrar" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        ¿Ya tienes cuenta? <a href="@Url.Action("Login", "Access")">Inicia Sesión</a>
+                    </div>
+                    @if (ViewBag.Mensaje != null)
+                    {
+                        <div class="alert alert-danger mt-3" role="alert"> 
+                            @ViewBag.Mensaje 
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
