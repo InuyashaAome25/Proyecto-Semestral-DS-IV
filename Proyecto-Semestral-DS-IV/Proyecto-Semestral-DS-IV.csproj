@@ -122,8 +122,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AutorController.cs" />
     <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,6 +140,7 @@
     <Compile Include="Models\DAO\clsUsuarios.cs" />
     <Compile Include="Models\Modelos\Administrador.cs" />
     <Compile Include="Models\Modelos\Autor.cs" />
+    <Compile Include="Models\Modelos\ContactoViewModel.cs" />
     <Compile Include="Models\Modelos\Genero.cs" />
     <Compile Include="Models\Modelos\Libro.cs" />
     <Compile Include="Models\Modelos\LoginViewModel.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="Models\Modelos\Popularidad.cs" />
     <Compile Include="Models\Modelos\Prestamo.cs" />
     <Compile Include="Models\Modelos\Rol.cs" />
+    <Compile Include="Models\Modelos\Sobre.cs" />
     <Compile Include="Models\Modelos\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -169,6 +173,7 @@
     <Content Include="Content\CSS\custom.min.css" />
     <Content Include="Content\CSS\Login.css" />
     <Content Include="Content\CSS\Registrar.css" />
+    <Content Include="Content\CSS\StyleContact.css" />
     <Content Include="Content\CSS\StyleInicio.css" />
     <Content Include="Content\CSS\StyleLayout.css" />
     <Content Include="Content\IMG\Alas-De-Hieero-2.png" />
@@ -573,9 +578,12 @@
     <Content Include="Vendors\jszip\README.markdown" />
     <Content Include="Vendors\jszip\_config.yml" />
     <Content Include="Vendors\pdfmake\build\pdfmake.min.js.map" />
+    <Content Include="Views\Autor\Create.cshtml" />
+    <Content Include="Views\Autor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Libro\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

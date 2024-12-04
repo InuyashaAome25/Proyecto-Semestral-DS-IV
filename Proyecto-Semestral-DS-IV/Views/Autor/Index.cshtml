@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Proyecto_Semestral_DS_IV.Models.Modelos.Autor>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Lista De Autores</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">@ViewBag.Message</div>
+}
+
+<div class="col-md-12 col-sm-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Autores <small>Listado</small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <p class="text-muted font-13 m-b-30">
+                            La extensión Buttons para DataTables proporciona un conjunto común de opciones, métodos API y estilos para mostrar botones en una página que interactuarán con un DataTable. La biblioteca central proporciona el marco básico sobre el cual se pueden construir complementos.
+                        </p>
+                        <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre Autor</th>
+                                    <th>Apellido Autor</th>
+                                    <th>Biografía</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var autor in Model)
+                                {
+                                    <tr>
+                                        <td>@autor.IDAutor</td>
+                                        <td>@autor.NombreAutor</td>
+                                        <td>@autor.ApellidoAutor</td>
+                                        <td>@autor.Biografia</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

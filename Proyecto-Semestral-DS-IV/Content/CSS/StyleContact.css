@@ -1,0 +1,16 @@
+﻿.container {
+    font-family: Arial, sans-serif;
+}
+
+.form-control, .btn {
+    border-radius: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }

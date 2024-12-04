@@ -1,8 +1,50 @@
-﻿
+﻿@model Proyecto_Semestral_DS_IV.Models.Modelos.Sobre
+
 @{
     ViewBag.Title = "Sobre";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Sobre</h2>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Sobre mí</h1>
 
+    <!-- Presentación -->
+    <div class="row align-items-center mb-5 bg-white">
+        <div class="col-md-4 text-center">
+            <img src="@Model.FotoUrl" alt="Foto de @Model.Nombre" class="rounded-circle img-fluid shadow-sm" />
+        </div>
+        <div class="col-md-8">
+            <p class="fs-5">@Model.Descripcion</p>
+        </div>
+    </div>
+
+    <!-- Hobbies y Logros -->
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <h2 class="text-primary">Hobbies</h2>
+            <ul class="list-group">
+                @foreach (var hobby in Model.Hobbies)
+                {
+                    <li class="list-group-item">@hobby</li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-primary">Logros</h2>
+            <ul class="list-group">
+                @foreach (var logro in Model.Logros)
+                {
+                    <li class="list-group-item">@logro</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sobre el proyecto -->
+    <div class="row">
+        <div class="col bg-white">
+            <h2 class="text-primary text-center">Sobre el proyecto</h2>
+            <p class="fs-5 text-justify mt-3">@Model.DescripcionProyecto</p>
+        </div>
+    </div>
+</div>

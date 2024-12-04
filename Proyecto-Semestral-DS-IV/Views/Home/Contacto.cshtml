@@ -1,23 +1,58 @@
-﻿
+﻿@model Proyecto_Semestral_DS_IV.Models.Modelos.ContactoViewModel
+
 @{
     ViewBag.Title = "Contacto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/CSS/StyleContact.css" rel="stylesheet" />
 
+<div class="container my-5">
+    <h1 class="text-center mb-4">Contáctenos</h1>
 
-<div class="container">
-    <h2>Contacto</h2>
-
-    <div class="row">
-        <div class="justify-content-md-center">
-            <h1 class="display-4 justify-content-center text-center">Bienvenidos A Arboles De Los Libros</h1>
-            <div class="col-sm-6 col-md-10 col-lg-12 align-items-center">
-                <p class="parrafo-inicio">
-                    ¡Descubre un mundo nuevo entre las páginas de un buen libro! Leer no solo es una fuente inagotable de conocimiento, sino una puerta abierta a la imaginación, la aventura y el crecimiento personal. Sumérgete en historias que despierten tu curiosidad, personajes que te inspiren y reflexiones que transformen tu perspectiva. Cada libro es una invitación a viajar sin moverte del lugar, a entender otras realidades y a enriquecer tu alma. ¿Qué esperas? ¡El próximo capítulo de tu vida podría estar en la próxima página que leas!
-                </p>
-            </div>
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["Mensaje"]
         </div>
+    }
+
+    <div class="d-flex justify-content-center">
+        <form method="post" action="@Url.Action("Contacto", "Home")" class="bg-white p-4 shadow rounded w-100">
+            <div class="form-group mb-3 text-center">
+                <label for="Nombre" class="form-label fw-bold">Nombre</label>
+                <div class="text-center align-items-center">
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control text-center", placeholder = "Tu nombre" })
+                    @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mb-3 text-center">
+                <label for="Email" class="form-label fw-bold">Correo Electrónico</label>
+                <div class="text-center">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control text-center", placeholder = "Tu correo electrónico" })
+                    @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mb-3 text-center">
+                <label for="Telefono" class="form-label fw-bold">Teléfono</label>
+                <div class="text-center">
+                    @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control text-center", placeholder = "Tu número de teléfono" })
+                    @Html.ValidationMessageFor(model => model.Telefono, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mb-3 text-center">
+                <label for="Mensaje" class="form-label fw-bold">Mensaje</label>
+                <div class="text-center">
+                    @Html.TextAreaFor(model => model.Mensaje, new { @class = "form-control text-center", placeholder = "Escribe tu mensaje aquí", rows = 4 })
+                    @Html.ValidationMessageFor(model => model.Mensaje, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">Enviar</button>
+            </div>
+        </form>
     </div>
 </div>
-
-
