@@ -122,9 +122,9 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
                                 Editorial = reader["Editorial"].ToString(),
                                 FechaPublicacion = (DateTime)reader["FechaPublicacion"],
                                 DescripcionLibro = reader["DescripcionLibro"].ToString(),
-                                Stock = reader["Stock"].ToString(),
-                                Genero = reader["Genero"].ToString(),
-                                Autor = reader["Autor"].ToString()
+                                Stock = (int)reader["Stock"], // Conversión corregida
+                                Genero = (int)reader["Genero"],
+                                Autor = (int)reader["Autor"],
                             };
                             libros.Add(libro);
                         }
@@ -133,6 +133,99 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
             }
 
             return libros;
+        }
+        public List<Genero> ObtenerGeneros()
+        {
+            var generos = new List<Genero>();
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("MostrarGeneros", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var genero = new Genero
+                            {
+                                IDGenero = (int)reader["Id"],
+                                NombreGenero = reader["NombreGenero"].ToString()
+                            };
+                            generos.Add(genero);
+                        }
+                    }
+                }
+            }
+
+            return generos;
+        }
+
+        public List<Autor> ObtenerAutores()
+        {
+            var autores = new List<Autor>();
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("MostrarAutores", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var autor = new Autor
+                            {
+                                IDAutor = (int)reader["Id"],
+                                NombreAutor = reader["NombreAutor"].ToString()
+                            };
+                            autores.Add(autor);
+                        }
+                    }
+                }
+            }
+
+            return autores;
+        }
+
+        public Libro ObtenerLibroPorId(int id)
+        {
+            Libro libro = null;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("ObtenerLibroPorId", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@IDLibros", id);
+
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            libro = new Libro
+                            {
+                                IDLibros = (int)reader["IDLibros"],
+                                Titulo = reader["Titulo"].ToString(),
+                                ISBN = reader["ISBN"].ToString(),
+                                Editorial = reader["Editorial"].ToString(),
+                                FechaPublicacion = (DateTime)reader["FechaPublicacion"],
+                                DescripcionLibro = reader["DescripcionLibro"].ToString(),
+                                Stock = (int)reader["Stock"],
+                                Genero = (int)reader["Genero"],
+                                Autor = (int)reader["Autor"]
+                            };
+                        }
+                    }
+                }
+            }
+
+            return libro;
         }
     }
 }

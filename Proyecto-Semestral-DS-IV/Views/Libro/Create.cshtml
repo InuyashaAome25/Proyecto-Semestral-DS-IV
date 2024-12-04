@@ -1,0 +1,111 @@
+﻿@model Proyecto_Semestral_DS_IV.Models.Modelos.Libro
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Crear Libro</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-info">@ViewBag.Message</div>
+                        }
+
+                        <!-- Formulario para Crear Libro -->
+                        <form action="@Url.Action("Create", "Libro")" method="post" class="form-horizontal">
+                            @Html.AntiForgeryToken()
+                            <span class="section">Información Libro</span>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Título:<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Título del Libro" } })
+                                    @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">ISBN:<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.EditorFor(model => model.ISBN, new { htmlAttributes = new { @class = "form-control", @placeholder = "ISBN del Libro" } })
+                                    @Html.ValidationMessageFor(model => model.ISBN, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Editorial:<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.EditorFor(model => model.Editorial, new { htmlAttributes = new { @class = "form-control", @placeholder = "Editorial del Libro" } })
+                                    @Html.ValidationMessageFor(model => model.Editorial, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Fecha de Publicación:<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.EditorFor(model => model.FechaPublicacion, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                    @Html.ValidationMessageFor(model => model.FechaPublicacion, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Descripción:</label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.TextAreaFor(model => model.DescripcionLibro, new { @class = "form-control", rows = 3, @placeholder = "Descripción del Libro" })
+                                    @Html.ValidationMessageFor(model => model.DescripcionLibro, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Stock:<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control", @placeholder = "Stock del Libro" } })
+                                    @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Género:<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.DropDownList("Genero", ViewBag.Generos as SelectList, "Seleccione un género", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Autor:<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.DropDownList("Autor", ViewBag.Autores as SelectList, "Seleccione un autor", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Autor, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3">
+                                        <button type="submit" class="btn btn-primary">Crear</button>
+                                        <input type="reset" class="btn btn-success" value="Restablecer" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
