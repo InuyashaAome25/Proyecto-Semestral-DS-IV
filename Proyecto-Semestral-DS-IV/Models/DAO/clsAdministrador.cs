@@ -115,7 +115,7 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
                         {
                             var administrador = new Administrador
                             {
-                                IDAdim = (int)reader["IDAdim"],
+                                IDAdmin = (int)reader["IDAdim"],
                                 Nombre = reader["Nombre"].ToString(),
                                 Apellido = reader["Apellido"].ToString(),
                                 Correo = reader["Correo"].ToString(),

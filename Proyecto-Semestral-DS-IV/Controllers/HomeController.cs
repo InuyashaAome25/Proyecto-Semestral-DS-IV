@@ -1,4 +1,5 @@
-﻿using Proyecto_Semestral_DS_IV.Models.Modelos;
+﻿using Proyecto_Semestral_DS_IV.Models.DAO;
+using Proyecto_Semestral_DS_IV.Models.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,17 @@ namespace Proyecto_Semestral_DS_IV.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private clsLibros clsLibros = new clsLibros();
         public ActionResult Inicio()
         {
             return View();
         }
-
+        // GET: Libro
+        [Authorize]
         public ActionResult Catalogo()
         {
-            return View();
+            var libros = clsLibros.MostrarLibros();
+            return View(libros);
         }
         public ActionResult Reserva()
         {
