@@ -109,23 +109,33 @@ namespace Proyecto_Semestral_DS_IV.Controllers
             return Json(isbn);
         }
 
-        // GET: Libro/Edit/5
-        [Authorize]
-        [HttpGet]
-        public ActionResult Edit(int id)
+        // Acción para buscar un libro por ID para actualizar
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FindBookForUpdate(int IDLibros)
         {
-            var libro = clsLibros.ObtenerLibroPorId(id);
+            var libro = clsLibros.ObtenerLibroPorId(IDLibros);
             if (libro == null)
             {
-                return HttpNotFound();
+                TempData["Message"] = "No se encontró el libro con el ID proporcionado.";
+                return RedirectToAction("Update");
             }
+
+            ViewBag.Libro = libro;
             ViewBag.Generos = new SelectList(clsGenero.MostrarGeneros(), "IDGenero", "NombreGenero", libro.Genero);
             ViewBag.Autores = new SelectList(clsAutor.MostrarAutoresParaCombobox(), "IDAutor", "NombreCompleto", libro.Autor);
-            return View(libro);
+            return View("Update");
         }
 
-        // POST: Libro/Edit/5
+        // Acción GET para mostrar la vista de actualización (Update)
+        [HttpGet]
         [Authorize]
+        public ActionResult Update()
+        {
+            return View();
+        }
+
+        // Acción POST para actualizar el libro
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Libro libro)
@@ -174,7 +184,7 @@ namespace Proyecto_Semestral_DS_IV.Controllers
             {
                 string mensaje;
                 clsLibros.ActualizarLibro(libro.IDLibros, libro.Titulo, libro.ISBN, libro.Editorial, libro.FechaPublicacion, libro.DescripcionLibro, libro.Stock, libro.Genero, libro.Autor, out mensaje);
-                ViewBag.Message = mensaje;
+                TempData["Message"] = mensaje;
                 if (mensaje == "Libro actualizado con éxito")
                 {
                     return RedirectToAction("Index");
@@ -183,32 +193,46 @@ namespace Proyecto_Semestral_DS_IV.Controllers
 
             ViewBag.Generos = new SelectList(clsGenero.MostrarGeneros(), "IDGenero", "NombreGenero", libro.Genero);
             ViewBag.Autores = new SelectList(clsAutor.MostrarAutoresParaCombobox(), "IDAutor", "NombreCompleto", libro.Autor);
-            return View(libro);
+            ViewBag.Libro = libro;  // Devolver el libro con sus datos para corregir en caso de error
+            return View("Update",libro);
         }
 
-        // GET: Libro/Delete/5
-        [Authorize]
-        [HttpGet]
-        public ActionResult Delete(int id)
+        // Acción para buscar un libro por ID
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FindBook(int IDLibros)
         {
-            var libro = clsLibros.ObtenerLibroPorId(id);
+            var libro = clsLibros.ObtenerLibroPorId(IDLibros);
             if (libro == null)
             {
-                return HttpNotFound();
+                TempData["Message"] = "No se encontró el libro con el ID proporcionado.";
+                return RedirectToAction("Delete");
             }
-            return View(libro);
+
+            ViewBag.Libro = libro;
+            return View("Delete");
         }
 
-        // POST: Libro/Delete/5
-        [Authorize]
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpGet]
+        public ActionResult Delete()
         {
+            return View();
+        }
+        // POST: Libro/Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? IDLibros)
+        {
+            if (IDLibros == null || IDLibros <= 0)
+            {
+                TempData["Message"] = "ID inválido para eliminar libro.";
+                return RedirectToAction("Delete"); // Redirigir a la misma vista Delete
+            }
+
             string mensaje;
-            clsLibros.EliminarLibro(id, out mensaje);
-            ViewBag.Message = mensaje;
-            return RedirectToAction("Index");
+            clsLibros.EliminarLibro(IDLibros.Value, out mensaje);
+            TempData["Message"] = mensaje;
+            return RedirectToAction("Delete");
         }
     }
 }

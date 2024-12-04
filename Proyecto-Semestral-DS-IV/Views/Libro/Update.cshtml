@@ -1,0 +1,140 @@
+﻿@model Proyecto_Semestral_DS_IV.Models.Modelos.Libro
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Update</h2>
+
+<div role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Actualizar Libro</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        @if (TempData["Message"] != null)
+                        {
+                            <div class="alert alert-info">@TempData["Message"]</div>
+                        }
+
+                        <!-- Formulario para Buscar Libro -->
+                        <form action="@Url.Action("FindBookForUpdate", "Libro")" method="post" class="form-horizontal">
+                            @Html.AntiForgeryToken()
+                            <span class="section">Buscar Libro</span>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">ID Libro:</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input type="number" class="form-control" name="IDLibros" placeholder="Ingrese el ID del Libro" required />
+                                </div>
+                            </div>
+
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3">
+                                        <input type="submit" value="Buscar" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        @if (ViewBag.Libro != null)
+                        {
+                            <!-- Formulario para Actualizar Libro -->
+                            <form action="@Url.Action("Edit", "Libro")" method="post" class="form-horizontal">
+                                @Html.AntiForgeryToken()
+                                <span class="section">Actualizar Libro</span>
+
+                                <input type="hidden" name="IDLibros" value="@ViewBag.Libro.IDLibros" />
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Título:</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="text" class="form-control" name="Titulo" value="@ViewBag.Libro.Titulo" />
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">ISBN:</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="text" class="form-control" name="ISBN" value="@ViewBag.Libro.ISBN" readonly />
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Editorial:</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="text" class="form-control" name="Editorial" value="@ViewBag.Libro.Editorial" />
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Fecha de Publicación:</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="date" class="form-control" name="FechaPublicacion" value="@ViewBag.Libro.FechaPublicacion.ToString("yyyy-MM-dd")" />
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Descripción:</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <textarea class="form-control" name="DescripcionLibro" rows="3">@ViewBag.Libro.DescripcionLibro</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Stock:</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="number" class="form-control" name="Stock" value="@ViewBag.Libro.Stock" />
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Género:</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <select class="form-control" name="Genero">
+                                            @foreach (var genero in ViewBag.Generos)
+                                            {
+                                                <option value="@genero.Value" @(Convert.ToInt32(genero.Value) == ViewBag.Libro.Genero ? "selected" : "")>@genero.Text</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Autor:</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <select class="form-control" name="Autor">
+                                            @foreach (var autor in ViewBag.Autores)
+                                            {
+                                                <option value="@autor.Value" @(Convert.ToInt32(autor.Value) == ViewBag.Libro.Autor ? "selected" : "")>@autor.Text</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="ln_solid">
+                                    <div class="form-group">
+                                        <div class="col-md-6 offset-md-3">
+                                            <input type="submit" value="Actualizar" class="btn btn-success" />
+                                            <a href="@Url.Action("Index", "Libro")" class="btn btn-secondary">Cancelar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

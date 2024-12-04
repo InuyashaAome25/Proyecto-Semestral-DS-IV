@@ -581,6 +581,9 @@
     <Content Include="Views\Autor\Create.cshtml" />
     <Content Include="Views\Autor\Index.cshtml" />
     <Content Include="Views\Libro\Create.cshtml" />
+    <Content Include="Views\Libro\Index.cshtml" />
+    <Content Include="Views\Libro\Delete.cshtml" />
+    <Content Include="Views\Libro\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

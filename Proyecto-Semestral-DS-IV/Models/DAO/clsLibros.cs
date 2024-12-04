@@ -60,7 +60,7 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
                     command.Parameters.AddWithValue("@Editorial", editorial);
                     command.Parameters.AddWithValue("@FechaPublicacion", fechaPublicacion);
                     command.Parameters.AddWithValue("@DescripcionLibro", descripcionLibro);
-                    command.Parameters.AddWithValue("@@Stock", stock);
+                    command.Parameters.AddWithValue("@Stock", stock);
                     command.Parameters.AddWithValue("@GeneroID", generoID);
                     command.Parameters.AddWithValue("@AutorID", autorID);
 
@@ -98,7 +98,6 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
                 }
             }
         }
-
         public List<Libro> MostrarLibros()
         {
             var libros = new List<Libro>();
@@ -122,9 +121,9 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
                                 Editorial = reader["Editorial"].ToString(),
                                 FechaPublicacion = (DateTime)reader["FechaPublicacion"],
                                 DescripcionLibro = reader["DescripcionLibro"].ToString(),
-                                Stock = (int)reader["Stock"], // Conversión corregida
-                                Genero = (int)reader["Genero"],
-                                Autor = (int)reader["Autor"],
+                                Stock = (int)reader["Stock"],
+                                NombreGenero = reader["NombreGenero"].ToString(),
+                                NombreAutor = reader["NombreAutor"].ToString()
                             };
                             libros.Add(libro);
                         }
@@ -217,8 +216,8 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
                                 FechaPublicacion = (DateTime)reader["FechaPublicacion"],
                                 DescripcionLibro = reader["DescripcionLibro"].ToString(),
                                 Stock = (int)reader["Stock"],
-                                Genero = (int)reader["Genero"],
-                                Autor = (int)reader["Autor"]
+                                Genero = (int)reader["GeneroID"],
+                                Autor = (int)reader["AutorID"]
                             };
                         }
                     }
