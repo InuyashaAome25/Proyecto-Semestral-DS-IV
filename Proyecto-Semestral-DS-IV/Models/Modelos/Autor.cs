@@ -19,5 +19,6 @@ namespace Proyecto_Semestral_DS_IV.Models.Modelos
         public string ApellidoAutor { get; set; }
         [StringLength(1000, ErrorMessage = "La biografía del autor no puede tener más de 1000 caracteres.")]
         public string Biografia { get; set; }
+        public string NombreCompleto { get; internal set; }
     }
 }

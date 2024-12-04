@@ -118,5 +118,34 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
 
             return autores;
         }
+
+        public List<Autor> MostrarAutoresParaCombobox()
+        {
+            var autores = new List<Autor>();
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("MostrarAutores", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var autor = new Autor
+                            {
+                                IDAutor = (int)reader["IDAutor"],
+                                NombreCompleto = $"{reader["NombreAutor"]} {reader["ApellidoAutor"]}" // Concatenar nombre y apellido
+                            };
+                            autores.Add(autor);
+                        }
+                    }
+                }
+            }
+
+            return autores;
+        }
     }
 }

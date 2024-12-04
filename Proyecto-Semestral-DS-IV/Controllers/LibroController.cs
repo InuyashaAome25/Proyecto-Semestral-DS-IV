@@ -28,11 +28,10 @@ namespace Proyecto_Semestral_DS_IV.Controllers
         public ActionResult Create()
         {
             ViewBag.Generos = new SelectList(clsGenero.MostrarGeneros(), "IDGenero", "NombreGenero");
-            ViewBag.Autores = new SelectList(clsAutor.MostrarAutores(), "IDAutor", "NombreAutor");
+            ViewBag.Autores = new SelectList(clsAutor.MostrarAutoresParaCombobox(), "IDAutor", "NombreCompleto");
             return View();
         }
 
-        // POST: Libro/Create
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -90,8 +89,24 @@ namespace Proyecto_Semestral_DS_IV.Controllers
             }
 
             ViewBag.Generos = new SelectList(clsGenero.MostrarGeneros(), "IDGenero", "NombreGenero");
-            ViewBag.Autores = new SelectList(clsAutor.MostrarAutores(), "IDAutor", "NombreAutor");
+            ViewBag.Autores = new SelectList(clsAutor.MostrarAutoresParaCombobox(), "IDAutor", "NombreCompleto");
             return View(libro);
+        }
+
+
+
+        // Nueva acción para generar ISBN
+        [Authorize]
+        [HttpPost]
+        public JsonResult GenerarISBN()
+        {
+            string isbn = "";
+            Random rnd = new Random();
+            for (int i = 0; i < 13; i++)
+            {
+                isbn += rnd.Next(0, 10).ToString();
+            }
+            return Json(isbn);
         }
 
         // GET: Libro/Edit/5
@@ -105,7 +120,7 @@ namespace Proyecto_Semestral_DS_IV.Controllers
                 return HttpNotFound();
             }
             ViewBag.Generos = new SelectList(clsGenero.MostrarGeneros(), "IDGenero", "NombreGenero", libro.Genero);
-            ViewBag.Autores = new SelectList(clsAutor.MostrarAutores(), "IDAutor", "NombreAutor", libro.Autor);
+            ViewBag.Autores = new SelectList(clsAutor.MostrarAutoresParaCombobox(), "IDAutor", "NombreCompleto", libro.Autor);
             return View(libro);
         }
 
@@ -167,7 +182,7 @@ namespace Proyecto_Semestral_DS_IV.Controllers
             }
 
             ViewBag.Generos = new SelectList(clsGenero.MostrarGeneros(), "IDGenero", "NombreGenero", libro.Genero);
-            ViewBag.Autores = new SelectList(clsAutor.MostrarAutores(), "IDAutor", "NombreAutor", libro.Autor);
+            ViewBag.Autores = new SelectList(clsAutor.MostrarAutoresParaCombobox(), "IDAutor", "NombreCompleto", libro.Autor);
             return View(libro);
         }
 

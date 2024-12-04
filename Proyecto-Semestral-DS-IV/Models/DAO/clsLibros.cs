@@ -18,7 +18,7 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
             connectionString = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
         }
 
-        public void CrearLibro(string titulo, string isbn, string editorial, DateTime fechaPublicacion, string descripcionLibro, int stock, int generoID, int autorID, out string mensaje)
+        public void CrearLibro(string titulo, string isbn, string editorial, DateTime fechaPublicacion, string descripcionLibro, int stock, int genero, int autor, out string mensaje)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -30,11 +30,11 @@ namespace Proyecto_Semestral_DS_IV.Models.DAO
                     command.Parameters.AddWithValue("@Editorial", editorial);
                     command.Parameters.AddWithValue("@FechaPublicacion", fechaPublicacion);
                     command.Parameters.AddWithValue("@DescripcionLibro", descripcionLibro);
-                    command.Parameters.AddWithValue("@@Stock", stock);
-                    command.Parameters.AddWithValue("@GeneroID", generoID);
-                    command.Parameters.AddWithValue("@AutorID", autorID);
+                    command.Parameters.AddWithValue("@Stock", stock);  // Añadir el parámetro @Stock
+                    command.Parameters.AddWithValue("@GeneroID", genero);
+                    command.Parameters.AddWithValue("@AutorID", autor);
 
-                    var outputParam = new SqlParameter("@Mensaje", SqlDbType.NVarChar, 200)
+                    var outputParam = new SqlParameter("@Mensaje", SqlDbType.NVarChar, 50)
                     {
                         Direction = ParameterDirection.Output
                     };
