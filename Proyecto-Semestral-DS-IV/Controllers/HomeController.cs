@@ -36,12 +36,12 @@ namespace Proyecto_Semestral_DS_IV.Controllers
         {
             var model = new Sobre
             {
-                Nombre = "Tu Nombre",
-                FotoUrl = "/Content/imagenes/foto_perfil.jpg",
+                Nombre = "Cesar Castillo",
+                FotoUrl = "~/Content/IMG/DSC05732.jpg",
                 Descripcion = "Soy desarrollador apasionado por crear soluciones innovadoras. Me encanta aprender nuevas tecnologías y colaborar en proyectos desafiantes.",
                 Hobbies = new List<string> { "Programación", "Leer libros", "Viajar", "Jugar videojuegos" },
-                Logros = new List<string> { "Certificación en Azure Fundamentals", "Desarrollo de una app con 1000+ descargas", "Hackathon ganador (2023)" },
-                DescripcionProyecto = "Este proyecto web es una plataforma MVC que permite gestionar información de clientes, productos y órdenes, con un diseño limpio y funcional."
+                Logros = new List<string> { "Participar en el festival FICCUA" , "Representar a la delegacion de Panamá en el desdile de la Hispanidad" },
+                DescripcionProyecto = "Este proyecto web es una plataforma MVC que permite gestionar el sistemas de una biblioteca, con un diseño limpio y funcional."
             };
 
             return View(model);

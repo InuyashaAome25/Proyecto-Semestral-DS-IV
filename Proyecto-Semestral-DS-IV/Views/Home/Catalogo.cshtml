@@ -15,20 +15,16 @@
 <div class="col-md-12 col-sm-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Libros <small>Listado</small></h2>
+            <h2> <small>Listado</small></h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card-box table-responsive">
-                        <p class="text-muted font-13 m-b-30">
-                            La extensión Buttons para DataTables proporciona un conjunto común de opciones, métodos API y estilos para mostrar botones en una página que interactuarán con un DataTable. La biblioteca central proporciona el marco básico sobre el cual se pueden construir complementos.
-                        </p>
                         <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Título</th>
                                     <th>ISBN</th>
                                     <th>Editorial</th>
@@ -43,7 +39,6 @@
                                 @foreach (var libro in Model)
                                 {
                                     <tr>
-                                        <td>@libro.IDLibros</td>
                                         <td>@libro.Titulo</td>
                                         <td>@libro.ISBN</td>
                                         <td>@libro.Editorial</td>

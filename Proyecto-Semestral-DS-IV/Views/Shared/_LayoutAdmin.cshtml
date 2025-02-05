@@ -41,8 +41,6 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Inicio", "Inicio", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Catalogo", "Catalogo", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Reserva", "Reserva", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Devolucion", "Devolucion", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     @if (Session["RolID"] != null && (int)Session["RolID"] == 2) // Si es Administrador
                     {
                         <li class="nav-item"><a class="nav-link" href="@Url.Action("Dashboard", "Admin")">Administrador</a></li>
@@ -101,7 +99,7 @@
                                 <li>
                                     <a><i class="fa fa-edit"></i> Autor <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("Create", "Autor")">Genero</a></li>
+                                        <li><a href="@Url.Action("Create", "Autor")">Autor</a></li>
 
                                     </ul>
                                 </li>
